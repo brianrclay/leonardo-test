@@ -1,24 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
+import { generateAdaptiveTheme } from '@adobe/leonardo-contrast-colors';
 import './App.css';
+
+// returns theme colors as JSON
+let myTheme = generateAdaptiveTheme({
+  colorScales: [
+    {
+      name: 'lightTheme',
+      colorKeys: ['#cacaca'],
+      colorspace: 'HSL',
+      ratios: [1, 2, 3, 4.5, 8, 12]
+    }
+  ],
+  baseScale: 'lightTheme',
+  brightness: 97
+});
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="wrapper">
+        <div className="box 100" />
+        <div className="box 200" />
+        <div className="box 300" />
+        <div className="box 400" />
+        <div className="box 500" />
+      </div>
+      <div className="wrapper">
+        <div className="box 100" />
+        <div className="box 200" />
+        <div className="box 300" />
+        <div className="box 400" />
+        <div className="box 500" />
+      </div>
     </div>
   );
 }
